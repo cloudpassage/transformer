@@ -7,10 +7,10 @@ import boto.ec2
 from aws_ec2 import SecurityGroup
 import cpapi
 import cputils
-import converter
+import transformer
 
 nameMatch = None
-authFile = "convert.auth"
+authFile = "transform.auth"
 verbose = False
 regionToCopy = None
 destName = None
@@ -102,7 +102,7 @@ def convertSecurityGroup(haloConn,group,destGroupName,platform):
         print >> sys.stderr, "Found existing Firewall Policy with name: %s" % destGroupName
         print >> sys.stderr, "  Group may have already been converted... skipping"
     else:
-        converter.convertSecurityGroupToHalo(haloConn,group,destGroupName,platform)
+        transformer.convertSecurityGroupToHalo(haloConn,group,destGroupName,platform)
 
 
 def convertRegion(ec2Conn,haloConn,nameMatch,regionName):
@@ -132,7 +132,7 @@ def convertRegion(ec2Conn,haloConn,nameMatch,regionName):
 #
 # End of Functions, beginning of in-line main code
 #
-converter.verbose = verbose
+transformer.verbose = verbose
 progDir = os.path.dirname(sys.argv[0])
 processCmdLineArgs(sys.argv[1:])
 

@@ -7,10 +7,10 @@ import boto.ec2
 from aws_ec2 import SecurityGroup
 import cpapi
 import cputils
-import converter
+import transformer
 
 nameMatch = None
-authFile = "convert.auth"
+authFile = "transform.auth"
 verbose = False
 destName = None
 destPrefix = None
@@ -76,7 +76,7 @@ def getHaloConnection(authFilename,progDir):
 #
 progDir = os.path.dirname(sys.argv[0])
 processCmdLineArgs(sys.argv[1:])
-converter.verbose = verbose
+transformer.verbose = verbose
 
 if (destRegion == None):
     ec2Conn = boto.connect_ec2()
@@ -100,4 +100,4 @@ for policy in policies:
     elif (destPrefix != None):
         destGroupName = destPrefix + policy['name']
     print "  Destination SG: %s" % destGroupName
-    converter.convertFirewallPolicyToSecurityGroup(haloConn,ec2Conn,policy,destGroupName)
+    transformer.convertFirewallPolicyToSecurityGroup(haloConn,ec2Conn,policy,destGroupName)
