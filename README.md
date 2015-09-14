@@ -130,3 +130,6 @@ $ transformHaloFPToSG.py
 ```
 
 
+<!---
+#CPTAGS:partner-integration integration automation
+-->
