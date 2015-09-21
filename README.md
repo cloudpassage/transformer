@@ -132,4 +132,5 @@ $ transformHaloFPToSG.py
 
 <!---
 #CPTAGS:partner-integration integration automation
+#TBICON:images/ruby_icon.png
 -->
